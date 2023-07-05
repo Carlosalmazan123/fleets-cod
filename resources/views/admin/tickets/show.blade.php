@@ -6,7 +6,8 @@
             </h1>
             <div class='flex justify-end'>
               <a href="{{route('admin.tickets.index')}}">
-                <button class='bg-blue-500 text-white hover:text-gray-300  px-4 py-1 rounded-xl' >
+                <button class='bg-white text-black border rounded-xl border-black hover:text-white hover:bg-black border px-4 py-1  
+                transition ease-out duration-500 '  >
                   Regresar
                 </button></a>
               
@@ -41,7 +42,7 @@
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->total}} Bs</td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->destiny->destiny}}</td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->schedule}}</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                  <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
                                   </td>
                                 </tr>

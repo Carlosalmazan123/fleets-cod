@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(UserTypeSeeder::class);
-        User::factory(40)->create();
         $this->call(UserSeeder::class);
         Destiny::factory(30)->create();
         Customer::factory(30)->create();

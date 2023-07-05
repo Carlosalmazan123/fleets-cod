@@ -1,26 +1,30 @@
 <x-app-layout>
     <div class='flex'>
-        <div class='w-64 bg-blue-600 rounded flex flex-row flex-wrap flex-justify'>
-            <div class='p-2 text-white hover:text-gray-300 text-center'>
-                <a class='font-semibold text-3xl p-9' href='{{route('admin.tickets.index')}}'>Boletos</a>
-            </div>
-            <div class='p-2 text-white hover:text-gray-300 text-center'>
-                <a class='font-semibold text-3xl p-9' href='{{route('admin.fleets.index')}}'>Buses</a>
-            </div>
-            <div class='p-2 text-white hover:text-gray-300 text-center'>
-                <a class='font-semibold text-3xl p-9' href='{{route('admin.destinies.index')}}'>Destinos</a>
-            </div>
-            
+      <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
+        <div class='p-2 text-white hover:text-gray-300 text-center'>
+            <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
         </div>
+        <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+            <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.fleets.index')}}'>Buses</a>
+        </div>
+        <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+          <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.destinies.index')}}'>Destinos</a>
+      </div>
+      <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+        <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.users.index')}}'>Usuarios</a>
+    </div>
+        
+    </div>
             <div class='flex-1 w-full p-8'>
                 <h1 class='text-center font-semibold text-2xl'>
                     Buses Registrados
                 </h1>
                 <div class='flex justify-end'>
                   <a href="{{route('admin.fleets.create')}}">
-                    <button class='bg-blue-500 text-white hover:text-gray-300  px-4 py-1 rounded-xl' >
-                      crear
-                    </button></a>
+                    <button class='bg-white text-black border rounded-xl border-black hover:text-white hover:bg-black border px-4 py-1  
+                transition ease-out duration-500 '  >
+                  crear
+                </button></a>
                   
                 </div>
                 <div class="flex flex-col rounded">

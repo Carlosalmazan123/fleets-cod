@@ -6,9 +6,10 @@
                 </h1>
                 <div class='flex justify-end'>
                   <a href="{{route('admin.fleets.index')}}">
-                    <button class='bg-blue-500 text-white hover:text-gray-300  px-4 py-1 rounded-xl' >
-                      Regresar
-                    </button></a>
+                    <button class='bg-white text-black border rounded-xl border-black hover:text-white hover:bg-black border px-4 py-1  
+                transition ease-out duration-500 '  >
+                  Regresar
+                </button></a>
                   
                 </div>
                 <div class="flex flex-col rounded">
@@ -34,7 +35,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$fleets->bathroom}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$fleets->sheet_day->name}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$fleets->sheet_day->assistant}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                       <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
                                     </td>
                                   </tr>
