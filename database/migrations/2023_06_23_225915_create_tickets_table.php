@@ -22,6 +22,10 @@ return new class extends Migration
             $table->unsignedBigInteger('destiny_id')->nullable();
             $table->foreign('destiny_id')->references('id')->on('destinies')->onUpdate('set null')->onDelete('set null');
 
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('set null')->onDelete('set null');
+
+
             $table->timestamps();
 
         });

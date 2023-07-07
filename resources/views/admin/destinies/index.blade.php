@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class='flex'>
       <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
-        <div class='p-2 text-white hover:text-gray-300 text-center'>
+        <div class='p-2 text-white hover:text-gray-300 text-center flex'>
             <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
         </div>
         <div class='p-2 text-white hover:text-gray-300 text-center flex'>
@@ -40,7 +40,7 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Origen</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Destino</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Precio</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Action</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 ">

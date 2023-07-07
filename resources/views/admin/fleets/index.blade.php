@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class='flex'>
-      <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
-        <div class='p-2 text-white hover:text-gray-300 text-center'>
+      <div class='w-64 bg-black rounded-xl flex flex-row flex-wrap'>
+        <div class='p-2 text-white hover:text-gray-300 text-center flex'>
             <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
         </div>
         <div class='p-2 text-white hover:text-gray-300 text-center flex'>
@@ -52,13 +52,32 @@
                                       <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->type}}</a></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                       <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->bathroom}}</a></td>
+                                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
+                                      @isset($fleet->sheet_day->name)
+                                      
+                                        <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->sheet_day->name}}</a>
+                                    @else
+                                     <h2 class='text-red-600'>El conductor fue despedido</h2>
+                                    @endisset
+                                      </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                      <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->sheet_day->name}}</a></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                      <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->sheet_day->assistant}}</a></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                      <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-                                    </td>
+                                    @isset($fleet->sheet_day->assistant)
+                                    <a href="{{ route('admin.fleets.show',$fleet->id)}}">{{$fleet->sheet_day->assistant}}</a>
+                                    @else
+                                     <h2 class='text-red-600'>El asistente fue despedido</h2>
+                                    @endisset
+                                    
+                                      </td>
+                                      <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
+                                        <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.fleets.edit', $fleet->id)}}">Editar</a>
+                                        <form action="{{route('admin.fleets.destroy',$fleet->id)}}" method="post">
+                                          @method('delete')
+                                          @csrf
+                                          <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                            Eliminar
+                                          </button>
+                                        </form>
+                                      </td>
                                   </tr>
     
                               @endforeach

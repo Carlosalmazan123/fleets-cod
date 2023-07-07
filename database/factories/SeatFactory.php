@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Fleet;
+use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,7 @@ class SeatFactory extends Factory
             //
             'seat'=>fake()->unique()->biasedNumberBetween(),
             'fleet_id'=>Fleet::all()->random()->id,
-            'customer_id'=>Customer::all()->random()->id,
+            'ticket_id'=>Ticket::all()->random()->id,
         ];
     }
 }

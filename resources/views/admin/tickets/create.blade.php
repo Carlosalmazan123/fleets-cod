@@ -23,6 +23,19 @@
         type="text"
         value='{{@old('CI')}}' class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-4" 
         placeholder="N° de CI">
+        <x-input-error :messages="$errors->get('type')" class="mt-2" />
+          <select 
+          name='fleet_id'
+          type='text'
+          value='{{@old('fleet_id')}}'
+          class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-4">
+              <option selected>Seleccione el Bus</option> 
+              @foreach ($fleets as $fleet)
+              <option value='{{$fleet->id}}'>{{$fleet->type}}</option>
+              @endforeach
+              
+            </select>
+  
         <x-input-error :messages="$errors->get('seat')" class="mt-2" />
         <input 
         name='seat'
@@ -38,12 +51,13 @@
         <x-input-error :messages="$errors->get('destiny')" class="mt-2" />
         <select 
         name='destiny_id'
-        value='{{@old('destiny')}}'
+        value='{{@old('destiny_id')}}'
         class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-4">
-            <option selected>Seleccione el Destino</option>
-            <option>Tarija</option>
-            <option>Potosí</option>
-            <option>La Paz</option>
+            <option selected>Seleccione el Destino</option> 
+            @foreach ($destinies as $destiny)
+            <option value='{{$destiny->id}}'>{{$destiny->destiny}}</option>
+            @endforeach
+            
           </select>
           <x-input-error :messages="$errors->get('schedule')" class="mt-2" />
     <select 

@@ -18,10 +18,10 @@
       </div>
           <div class='flex-1 w-full p-8'>
               <h1 class='text-center font-semibold text-2xl'>
-                  Boletos Registrados
+                  Usuarios Registrados
               </h1>
               <div class='flex justify-end'>
-                <a href="{{route('admin.tickets.create')}}">
+                <a href="{{route('admin.users.create')}}">
                   <button class='bg-white text-black border rounded-xl border-black hover:text-white hover:bg-black border px-4 py-1  
                   transition ease-out duration-500 '  >
                     crear
@@ -39,7 +39,6 @@
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre de Usuario</th>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tipo de usuario</th>
-                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contraseña</th>
                               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
                             </tr>
                           </thead>
@@ -54,11 +53,18 @@
                                       
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
                                       <a href="{{ route('admin.users.show',$user->id)}}">{{$user->email}}</a></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                      <a href="{{ route('admin.users.show',$user->id)}}">{{$user->password}}</a></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                      <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-                                    </td>
+                                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
+                                        <a href="{{ route('admin.users.show',$user->id)}}">{{$user->user_type}}</a></td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
+                                          <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.users.edit', $user->id)}}">Editar</a>
+                                          <form action="{{route('admin.users.destroy',$user->id)}}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                              Eliminar
+                                            </button>
+                                          </form>
+                                        </td>
                                   </tr>
                                 
   

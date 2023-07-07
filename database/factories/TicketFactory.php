@@ -25,6 +25,7 @@ class TicketFactory extends Factory
             'schedule'=>fake()->randomElement(['09:00','14:00','17:00']),
             'user_id'=>User::all()->random()->id,
             'destiny_id'=>Destiny::all()->random()->id,
+            'customer_id'=>Customer::all()->random()->id
         ];
     }
 }

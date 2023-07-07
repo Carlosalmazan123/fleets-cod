@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('fleet_id')->nullable();
             $table->foreign('fleet_id')->references('id')->on('fleets')->onUpdate('set null')->onDelete('set null');
 
-            $table->unsignedBigInteger('customer_id')->nullable();
-            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('set null')->onDelete('set null');
+            $table->unsignedBigInteger('ticket_id')->nullable();
+            $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('set null')->onDelete('set null');
             $table->timestamps();
 
 

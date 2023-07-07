@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class='flex'>
     <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
-        <div class='p-2 text-white hover:text-gray-300 text-center'>
+        <div class='p-2 text-white hover:text-gray-300 text-center flex'>
             <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
         </div>
         <div class='p-2 text-white hover:text-gray-300 text-center flex'>
@@ -38,6 +38,7 @@
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Apellido</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">N° CI</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bus</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Asiento N°</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Importe a pagar</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Destino</th>
@@ -53,25 +54,40 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->id}}</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
-                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->customer->name}}</a></td>
+                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->customer->name}}</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->customer->last_name}}</a></td>
+                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->customer->last_name}}</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->customer->CI}}</a></td>
+                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->customer->CI}}</a></td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
+                                    <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->fleet->type}}</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->seat}}</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->total}} Bs</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->destiny->destiny}}</a></td>
+                                  
+                                    @isset($ticket->destiny->destiny)
+                                    <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->destiny->destiny}}
+                                    </a>
+                                    @else
+                                     <h2 class='text-red-600'>El destino fue borrado</h2>
+                                    @endisset
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->schedule}}</a></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                  <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-                                </td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
+                                    <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.tickets.edit', $ticket->id)}}">Editar</a>
+                                    <form action="{{route('admin.tickets.destroy',$ticket->id)}}" method="post">
+                                      @method('delete')
+                                      @csrf
+                                      <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                        Eliminar
+                                      </button>
+                                    </form>
+                                  </td>
                               </tr>
                               @endforeach
-
                           @endforeach
                           
                           

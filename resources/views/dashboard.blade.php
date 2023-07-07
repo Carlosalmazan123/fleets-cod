@@ -1,17 +1,18 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+    <div class='flex'>
+        <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
+            <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+                <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
             </div>
+            <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+                <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.fleets.index')}}'>Buses</a>
+            </div>
+            <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+              <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.destinies.index')}}'>Destinos</a>
+          </div>
+          <div class='p-2 text-white hover:text-gray-300 text-center flex'>
+            <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl' href='{{route('admin.users.index')}}'>Usuarios</a>
         </div>
+
     </div>
 </x-app-layout>

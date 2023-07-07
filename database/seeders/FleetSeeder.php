@@ -16,17 +16,10 @@ class FleetSeeder extends Seeder
     public function run(): void
     {
         //
-        $fake_fleet=Fleet::factory(30)->create();
-
-        foreach($fake_fleet as $fleet){
-            $image=new Image();
-            $image->image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHhsGD2TKOLRpaE0CfgFZ3NRxE84OVSFB0BQ&usqp=CAU';
-            $image->fleet_id=$fleet->id;
-            $image->save();
-            $image=new Image();
-            $image->image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHhsGD2TKOLRpaE0CfgFZ3NRxE84OVSFB0BQ&usqp=CAU';
-            $image->fleet_id=$fleet->id;
-            $image->save();
-    }
+        $fleets=new Fleet();
+        $fleets->type='nissan';
+        $fleets->bathroom='Si';
+        $fleets->sheet_day_id=1;
+        $fleets->save();
     }
 }

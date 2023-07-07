@@ -55,7 +55,11 @@ Route::get('admin/fleets/create',[AdminFleetController::class,'create'])->middle
 
 Route::get('admin/destinies/create',[AdminDestinyController::class,'create'])->middleware(['auth', 'verified'])->name('admin.destinies.create');
 
+Route::get('admin/users/create',[AdminUserController::class,'create'])->middleware(['auth', 'verified'])->name('admin.users.create');
+
 Route::post('/admin/tickets',[AdminTicketController::class,'store'])->middleware(['auth', 'verified'])->name('admin.tickets.store');
+
+Route::post('/admin/users',[AdminUserController::class,'store'])->middleware(['auth', 'verified'])->name('admin.users.store');
 
 Route::post('/admin/destinies',[AdminDestinyController::class,'store'])->middleware(['auth', 'verified'])->name('admin.destinies.store');
 
@@ -71,9 +75,27 @@ Route::get('/admin/users/{user}',[AdminUserController::class,'show'])->middlewar
 
 Route::get('/admin/destinies/{destiny}/edit',[AdminDestinyController::class,'edit'])->middleware(['auth', 'verified'])->name('admin.destinies.edit');
 
+Route::get('/admin/users/{user}/edit',[AdminUserController::class,'edit'])->middleware(['auth', 'verified'])->name('admin.users.edit');
+
+Route::get('/admin/fleets/{fleet}/edit',[AdminFleetController::class,'edit'])->middleware(['auth', 'verified'])->name('admin.fleets.edit');
+
+Route::get('/admin/tickets/{ticket}/edit',[AdminTicketController::class,'edit'])->middleware(['auth', 'verified'])->name('admin.tickets.edit');
+
 Route::put('/admin/destinies/{destiny}',[AdminDestinyController::class,'update'])->middleware(['auth', 'verified'])->name('admin.destinies.update');
 
+Route::put('/admin/tickets/{ticket}',[AdminTicketController::class,'update'])->middleware(['auth', 'verified'])->name('admin.tickets.update');
+
+Route::put('/admin/fleets/{fleet}',[AdminFleetController::class,'update'])->middleware(['auth', 'verified'])->name('admin.fleets.update');
+
+Route::put('/admin/users/{user}',[AdminUserController::class,'update'])->middleware(['auth', 'verified'])->name('admin.users.update');
+
 Route::delete('/admin/destinies/{destiny}',[AdminDestinyController::class,'destroy'])->middleware(['auth', 'verified'])->name('admin.destinies.destroy');
+
+Route::delete('/admin/users/{user}',[AdminUserController::class,'destroy'])->middleware(['auth', 'verified'])->name('admin.users.destroy');
+
+Route::delete('/admin/fleets/{fleet}',[AdminFleetController::class,'destroy'])->middleware(['auth', 'verified'])->name('admin.fleets.destroy');
+
+Route::delete('/admin/tickets/{ticket}',[AdminTicketController::class,'destroy'])->middleware(['auth', 'verified'])->name('admin.tickets.destroy');
 
 Route::get('/admin',function(){
     return view('admin.index');

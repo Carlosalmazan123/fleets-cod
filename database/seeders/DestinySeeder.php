@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Destiny;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DestinySeeder extends Seeder
 {
@@ -13,6 +14,23 @@ class DestinySeeder extends Seeder
     public function run(): void
     {
         //
+        $destinies=new Destiny();
+        $destinies->origin='Cotagaita';
+        $destinies->destiny='tarija';
+        $destinies->price=20;
+        $destinies->save();
+
+        $origins=new Destiny();
+        $origins->origin='La paz';
+        $origins->destiny='Santa Cruz';
+        $origins->price=26;
+        $origins->save();
+
+        $final=new Destiny();
+        $final->origin='Oruro';
+        $final->destiny='Potosí';
+        $final->price=28;
+        $final->save();
         
     }
 }

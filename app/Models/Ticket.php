@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Customer;
+use App\Models\Seat;
 use App\Models\User;
 use App\Models\Destiny;
+use App\Models\Customer;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ticket extends Model
 {
     use HasFactory;
+    protected $guarded=['id','created_at','update_at'];
     public function seats(){
-        return $this->belongsToMany(Seat::class);
+        return $this->hasMany(Seat::class);
     }
     public function destiny(){
         return $this->belongsTo(Destiny::class);

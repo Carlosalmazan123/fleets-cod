@@ -27,14 +27,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(UserTypeSeeder::class);
         $this->call(UserSeeder::class);
-        Destiny::factory(30)->create();
+        $this->call(DestinySeeder::class);
         Customer::factory(30)->create();
         SheetDay::factory(20)->create();
         $this->call(FleetSeeder::class);
-        Seat::factory(100)->create();
+        
         $this->call(TicketSeeder::class);
+        Seat::factory(100)->create();
         
 
         

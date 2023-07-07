@@ -15,9 +15,7 @@ class TicketSeeder extends Seeder
     public function run(): void
     {
         //
-        $tickets=Ticket::factory(30)->create();
-        foreach($tickets as $ticket){
-            $ticket->seats()->attach([Seat::all()->random()->id]);
-        }
+        Ticket::factory(40)->create();
+    
     }
 }
