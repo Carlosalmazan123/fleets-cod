@@ -12,7 +12,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Ticket extends Model
 {
     use HasFactory;
-    protected $guarded=['id','created_at','update_at'];
+    
+    protected $fillable=[
+        'total',
+        'schedule',
+        'destiny_id'
+
+    ];
     public function seats(){
         return $this->hasMany(Seat::class);
     }

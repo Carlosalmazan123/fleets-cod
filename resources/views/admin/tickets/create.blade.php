@@ -27,7 +27,6 @@
           <select 
           name='fleet_id'
           type='text'
-          value='{{@old('fleet_id')}}'
           class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-4">
               <option selected>Seleccione el Bus</option> 
               @foreach ($fleets as $fleet)
@@ -70,9 +69,11 @@
         <option>17:00</option>
       </select>
       <div class='flex justify-center'>
-            <button type='submit'class='bg-blue-500 text-white hover:text-gray-300  px-4 py-1 rounded-xl mt-8' >
-              crear
-            </button>
+      
+          <button class='bg-white text-black border rounded-xl border-black hover:text-white hover:bg-black border px-4 py-1  
+          transition ease-out duration-500 '  >
+            crear
+          </button>
       </div>
       
     </form>

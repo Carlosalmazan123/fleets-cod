@@ -75,33 +75,31 @@ class TicketController extends Controller
         $tickets=Ticket::find($tickets);
         $request->validate([
             'total'=>['required' ,'max:25' , Rule::unique('tickets')->ignore($tickets->id)] ,
-            'destiny_id'=>['required','max:25'],
-            'customer_id'=>['required','max:25'],
-            'schedule'=>['required','max:13']
+            'destiny_id'=>['required','integer'],
+            'name'=>['required','max:25'],
+            'last_name'=>['required','max:25'],
+            'CI'=>['required','max:25'],
+            'seat'=>['required','max:25'],
+            'schedule'=>['required','max:24']
         ]);
-        $Customer=new Customer();
-        $Customer->name=$request->name;
-        $Customer->last_name=$request->last_name;
-        $Customer->CI=$request->CI;
-        $Customer->save();
-
-
-        $Seat=new Seat();
-        $Seat->seat=$request->seat;
-        $Seat->ticket_id=$tickets->id;
-        $Seat->fleet_id=$request->fleet_id;
-        $Seat->save();
         $tickets->update([
          
             
             'total'=>$request->total,
             'destiny_id'=>$request->destiny_id,
-            'customer_id'=>$Customer->id,
             'schedule'=>$request->schedule
             
         ]);
-        
-        return $request;
+        $tickets->customer()->first()->update([
+            'name'=>$request->name,
+            'last_name'=>$request->last_name,
+            'CI'=>$request->CI
+        ]);
+        $tickets->seats()->first()->update([
+            'seat'=>$request->seat
+        ]);
+
+        return redirect()->route('admin.tickets.index');
     }
     public function destroy($variable){
         $tickets=Ticket::find($variable);

@@ -70,9 +70,9 @@
  
                   class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-4">
                       <option selected>Seleccione la Hora de Salida</option>
-                      <option {{$tickets->schedule==='09:00' ? 'selected' : null}} value='1'>09:00</option>
-                      <option {{$tickets->schedule==='14:00' ? 'selected' : null}} value='2'>14:00</option>
-                      <option {{$tickets->schedule==='17:00' ? 'selected' : null}} value='3'>17:00</option>
+                      <option >09:00</option>
+                      <option >14:00</option>
+                      <option >17:00</option>
                     </select>
             
           <div class='flex justify-center'>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class='flex'>
-      <div class='w-64 bg-black rounded flex flex-row flex-wrap'>
+      <div class='w-64 h-auto bg-black rounded flex flex-row flex-wrap'>
         <div class='p-2 text-white hover:text-gray-300 text-center flex'>
             <a class='font-semibold text-3xl p-9 hover:ease-out duration-500 hover:text-4xl ' href='{{route('admin.tickets.index')}}'>Boletos</a>
         </div>
@@ -58,11 +58,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                           <a href="{{ route('admin.destinies.show',$destiny->id)}}">{{$destiny->price}} Bs</a></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
-                                          <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.destinies.edit', $destiny->id)}}">Editar</a>
+                                          <a class="text-gray-500 hover:text-black p-3" href="{{route('admin.destinies.edit', $destiny->id)}}">Editar</a>
                                           <form action="{{route('admin.destinies.destroy',$destiny->id)}}" method="post">
                                             @method('delete')
                                             @csrf
-                                            <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                            <button class="text-gray-500 hover:text-black p-3" type='submit'>
                                               Eliminar
                                             </button>
                                           </form>

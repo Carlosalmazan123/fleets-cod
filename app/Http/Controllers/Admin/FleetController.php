@@ -55,9 +55,11 @@ class FleetController extends Controller
         ]);
         $fleets->update([
             'type'=>$request->type,
-            'bathroom'=>$request->bathroom,
-            'name'=>$request->sheet_day->name,
-            'assistant'=>$request->sheet_day->assistant
+            'bathroom'=>$request->bathroom
+        ]);
+        $fleets->sheet_day()->first()->update([
+            'name'=>$request->name,
+            'assistant'=>$request->name
         ]);
         
         return redirect()->route('admin.fleets.index');

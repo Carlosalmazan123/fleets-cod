@@ -38,7 +38,6 @@
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Apellido</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">N° CI</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bus</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Asiento N°</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Importe a pagar</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Destino</th>
@@ -49,7 +48,6 @@
                         <tbody class="divide-y divide-gray-200 ">
 
                           @foreach ($tickets as $ticket)
-                              @foreach ($ticket->seats as $seat)
                               <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->id}}</a></td>
@@ -60,9 +58,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->customer->CI}}</a></td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                    <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->fleet->type}}</a></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
-                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$seat->seat}}</a></td>
+                                  @isset($ticket->seats[0])
+                                  <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->seats[0]->seat}}</a>
+                                    @else
+                                     <h2 class='text-red-600'>El asiento no está disponible</h2>
+                                    @endisset
+                                
+                                  </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->total}} Bs</a></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
@@ -77,17 +79,16 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
                                   <a href="{{ route('admin.tickets.show',$ticket->id)}}">{{$ticket->schedule}}</a></td>
                                   <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
-                                    <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.tickets.edit', $ticket->id)}}">Editar</a>
+                                    <a class="text-gray-500 hover:text-black p-3" href="{{route('admin.tickets.edit', $ticket->id)}}">Editar</a>
                                     <form action="{{route('admin.tickets.destroy',$ticket->id)}}" method="post">
                                       @method('delete')
                                       @csrf
-                                      <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                      <button class="text-gray-500 hover:text-black p-3" type='submit'>
                                         Eliminar
                                       </button>
                                     </form>
                                   </td>
                               </tr>
-                              @endforeach
                           @endforeach
                           
                           

@@ -35,7 +35,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$destiny->destiny}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$destiny->price}} Bs</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                                      <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
+                                      <a class="text-gray-500 hover:text-black p-3" href="#">Delete</a>
                                     </td>
                                   </tr>
                               

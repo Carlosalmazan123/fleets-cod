@@ -11,6 +11,9 @@ use App\Models\Fleet;
 class Seat extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'seat'
+    ];
     public function ticket(){
         return $this->belongsTo(Ticket::class);
     }

@@ -69,11 +69,11 @@
                                     
                                       </td>
                                       <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
-                                        <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.fleets.edit', $fleet->id)}}">Editar</a>
+                                        <a class="text-gray-500 hover:text-black p-3" href="{{route('admin.fleets.edit', $fleet->id)}}">Editar</a>
                                         <form action="{{route('admin.fleets.destroy',$fleet->id)}}" method="post">
                                           @method('delete')
                                           @csrf
-                                          <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                          <button class="text-gray-500 hover:text-black p-3" type='submit'>
                                             Eliminar
                                           </button>
                                         </form>

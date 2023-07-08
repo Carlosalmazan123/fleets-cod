@@ -2,7 +2,7 @@
     <div class='flex'>
           <div class='flex-1 w-full p-8'>
             <h1 class='text-center font-semibold text-2xl'>
-                Informacion del Destino N° {{$tickets->id}}
+                Informacion del Boleto N° {{$tickets->id}}
             </h1>
             <div class='flex justify-end'>
               <a href="{{route('admin.tickets.index')}}">
@@ -32,21 +32,27 @@
                           </thead>
                           <tbody class="divide-y divide-gray-200 ">
   
-                                @foreach ($tickets->seats as $seat)
                                 <tr>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">{{$tickets->id}}</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">{{$seat->customer->name}}</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$seat->customer->last_name}}</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$seat->customer->CI}}</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$seat->seat}}</td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">{{$tickets->customer->name}}</td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->customer->last_name}}</td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->customer->CI}}</td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">
+                                  @isset($tickets->seats[0]->seat)
+                                     {{$tickets->seats[0]->seat}}
+                                    @else
+                                     <h2 class='text-red-600'>El asiento no está disponible</h2>
+                                    @endisset
+                                  </td>
+                                  
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->total}} Bs</td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->destiny->destiny}}</td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 -200">{{$tickets->schedule}}</td>
                                   <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                                    <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
+                                    <a class="text-gray-500 hover:text-black p-3" href="#">Delete</a>
                                   </td>
                                 </tr>
-                                @endforeach
+          
                             
                             
                           </tbody>

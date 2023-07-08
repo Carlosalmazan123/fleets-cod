@@ -56,11 +56,11 @@
                                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 -200">
                                         <a href="{{ route('admin.users.show',$user->id)}}">{{$user->user_type}}</a></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-rigth text-sm font-medium flex">
-                                          <a class="text-blue-500 hover:text-blue-700 p-3" href="{{route('admin.users.edit', $user->id)}}">Editar</a>
+                                          <a class="text-gray-500 hover:text-black p-3" href="{{route('admin.users.edit', $user->id)}}">Editar</a>
                                           <form action="{{route('admin.users.destroy',$user->id)}}" method="post">
                                             @method('delete')
                                             @csrf
-                                            <button class="text-blue-500 hover:text-blue-700 p-3" type='submit'>
+                                            <button class="text-gray-500 hover:text-black p-3" type='submit'>
                                               Eliminar
                                             </button>
                                           </form>
